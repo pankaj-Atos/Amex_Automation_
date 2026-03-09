@@ -13,7 +13,9 @@ public class DriverFactory {
     // Initialize WebDriver
     public static void initDriver() {
 
-        String browser = ConfigReader.getProperty("browser");
+        String browser = System.getProperty("browser") != null ?
+                System.getProperty("browser") :
+                ConfigReader.getProperty("browser");
 
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
